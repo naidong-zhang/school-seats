@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>School division wards</h1>
+
+<div id="school_division_wards">
+  <% @school_division_wards.each do |school_division_ward| %>
+    <%= render school_division_ward %>
+    <p>
+      <%= link_to "Show this school division ward", school_division_ward %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New school division ward", new_school_division_ward_path %>

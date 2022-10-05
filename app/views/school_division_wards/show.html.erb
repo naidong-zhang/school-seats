@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @school_division_ward %>
+
+<div>
+  <%= link_to "Edit this school division ward", edit_school_division_ward_path(@school_division_ward) %> |
+  <%= link_to "Back to school division wards", school_division_wards_path %>
+
+  <%= button_to "Destroy this school division ward", @school_division_ward, method: :delete %>
+</div>

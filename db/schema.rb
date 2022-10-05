@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_05_033200) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_05_033427) do
+  create_table "school_division_wards", force: :cascade do |t|
+    t.string "name"
+    t.integer "school_division_id", null: false
+    t.integer "ward_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["school_division_id"], name: "index_school_division_wards_on_school_division_id"
+    t.index ["ward_id"], name: "index_school_division_wards_on_ward_id"
+  end
+
   create_table "school_divisions", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -23,4 +33,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_05_033200) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "school_division_wards", "school_divisions"
+  add_foreign_key "school_division_wards", "wards"
 end
