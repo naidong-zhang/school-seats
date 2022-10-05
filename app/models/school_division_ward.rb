@@ -1,5 +1,5 @@
 class SchoolDivisionWard < ApplicationRecord
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 
   belongs_to :school_division
   belongs_to :ward
