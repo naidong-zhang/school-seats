@@ -1,0 +1,97 @@
+<%= form_with(model: school) do |form| %>
+  <% if school.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(school.errors.count, "error") %> prohibited this school from being saved:</h2>
+
+      <ul>
+        <% school.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :nursery, style: "display: block" %>
+    <%= form.number_field :nursery %>
+  </div>
+
+  <div>
+    <%= form.label :kindergarten, style: "display: block" %>
+    <%= form.number_field :kindergarten %>
+  </div>
+
+  <div>
+    <%= form.label :grade1, style: "display: block" %>
+    <%= form.number_field :grade1 %>
+  </div>
+
+  <div>
+    <%= form.label :grade2, style: "display: block" %>
+    <%= form.number_field :grade2 %>
+  </div>
+
+  <div>
+    <%= form.label :grade3, style: "display: block" %>
+    <%= form.number_field :grade3 %>
+  </div>
+
+  <div>
+    <%= form.label :grade4, style: "display: block" %>
+    <%= form.number_field :grade4 %>
+  </div>
+
+  <div>
+    <%= form.label :grade5, style: "display: block" %>
+    <%= form.number_field :grade5 %>
+  </div>
+
+  <div>
+    <%= form.label :grade6, style: "display: block" %>
+    <%= form.number_field :grade6 %>
+  </div>
+
+  <div>
+    <%= form.label :grade7, style: "display: block" %>
+    <%= form.number_field :grade7 %>
+  </div>
+
+  <div>
+    <%= form.label :grade8, style: "display: block" %>
+    <%= form.number_field :grade8 %>
+  </div>
+
+  <div>
+    <%= form.label :grade9, style: "display: block" %>
+    <%= form.number_field :grade9 %>
+  </div>
+
+  <div>
+    <%= form.label :grade10, style: "display: block" %>
+    <%= form.number_field :grade10 %>
+  </div>
+
+  <div>
+    <%= form.label :grade11, style: "display: block" %>
+    <%= form.number_field :grade11 %>
+  </div>
+
+  <div>
+    <%= form.label :grade12, style: "display: block" %>
+    <%= form.number_field :grade12 %>
+  </div>
+
+  <div>
+    <%= form.label :school_division_ward_id, style: "display: block" %>
+    <%= form.text_field :school_division_ward_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

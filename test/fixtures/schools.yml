@@ -1,0 +1,37 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  nursery: 1
+  kindergarten: 1
+  grade1: 1
+  grade2: 1
+  grade3: 1
+  grade4: 1
+  grade5: 1
+  grade6: 1
+  grade7: 1
+  grade8: 1
+  grade9: 1
+  grade10: 1
+  grade11: 1
+  grade12: 1
+  school_division_ward: one
+
+two:
+  name: MyString
+  nursery: 1
+  kindergarten: 1
+  grade1: 1
+  grade2: 1
+  grade3: 1
+  grade4: 1
+  grade5: 1
+  grade6: 1
+  grade7: 1
+  grade8: 1
+  grade9: 1
+  grade10: 1
+  grade11: 1
+  grade12: 1
+  school_division_ward: two
