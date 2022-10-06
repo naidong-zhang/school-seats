@@ -1,13 +1,64 @@
+<% content_for (:page_title) {"Schools"} %>
+
 <p style="color: green"><%= notice %></p>
 
-<h1>Schools</h1>
+<h1 class="title is-spaced">Schools</h1>
+<p class="subtitle">Total: <%= pluralize @schools.count, "schools" %></p>
 
 <div id="schools">
+    <div class="columns">
+      <div class="column">
+        <strong>School Name</strong>
+      </div>
+      <div class="column">
+        <strong>Nursery Students</strong>
+      </div>
+      <div class="column">
+        <strong>Kindergarten Students</strong>
+      </div>
+      <div class="column">
+        <strong>Primary Students</strong>
+      </div>
+      <div class="column">
+        <strong>Secondary Students</strong>
+      </div>
+      <div class="column">
+        <strong>School Division Ward</strong>
+      </div>
+      <div class="column">
+        <strong>Ward</strong>
+      </div>
+      <div class="column">
+        <strong>School Division</strong>
+      </div>
+    </div>
   <% @schools.each do |school| %>
-    <%= render school %>
-    <p>
-      <%= link_to "Show this school", school %>
-    </p>
+    <div class="columns">
+      <div class="column">
+        <%= link_to school.name, school %>
+      </div>
+      <div class="column">
+        <%= show_grade_students school.nursery %>
+      </div>
+      <div class="column">
+        <%= show_grade_students school.kindergarten %>
+      </div>
+      <div class="column">
+        <%= show_primary_students school %>
+      </div>
+      <div class="column">
+        <%= show_secondary_students school %>
+      </div>
+      <div class="column">
+        <%= link_to pluralize(school.school_division_ward.home_addresses.count, "home address"), school.school_division_ward %>
+      </div>
+      <div class="column">
+        <%= link_to school.school_division_ward.ward.name, school.school_division_ward.ward %>
+      </div>
+      <div class="column">
+        <%= link_to school.school_division_ward.school_division.name, school.school_division_ward.school_division %>
+      </div>
+    </div>
   <% end %>
 </div>
 
