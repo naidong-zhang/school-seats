@@ -3,7 +3,11 @@
 <p style="color: green"><%= notice %></p>
 
 <h1 class="title is-spaced">Schools</h1>
-<p class="subtitle">Total: <%= pluralize @schools.count, "schools" %></p>
+
+<div class="block columns">
+  <div class="subtitle column">Total: <%= pluralize @schools_count, "schools" %></div>
+  <div class="column is-one-fifth"><%= paginate @schools_per_page %></div>
+</div>
 
 <table id="schools" class="table">
   <thead>
@@ -35,7 +39,7 @@
     </tr>
   </thead>
   <tbody>
-  <% @schools.each do |school| %>
+  <% @schools_per_page.each do |school| %>
     <tr>
       <th>
         <%= link_to school.name, school %>

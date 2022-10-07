@@ -7,4 +7,6 @@ class School < ApplicationRecord
 
   has_many :seats
   has_many :home_addresses, through: :seats
+
+  paginates_per 50
 end

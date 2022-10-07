@@ -1,14 +1,14 @@
 class SchoolsController < ApplicationController
-  before_action :set_school, only: %i[ show edit update destroy ]
+  before_action :set_school, only: %i[show edit update destroy]
 
   # GET /schools or /schools.json
   def index
-    @schools = School.all
+    @schools_per_page = School.order(:name).page params[:page]
+    @schools_count = School.count
   end
 
   # GET /schools/1 or /schools/1.json
-  def show
-  end
+  def show; end
 
   # GET /schools/new
   def new
@@ -16,8 +16,7 @@ class SchoolsController < ApplicationController
   end
 
   # GET /schools/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /schools or /schools.json
   def create
@@ -58,13 +57,15 @@ class SchoolsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_school
-      @school = School.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def school_params
-      params.require(:school).permit(:name, :nursery, :kindergarten, :grade1, :grade2, :grade3, :grade4, :grade5, :grade6, :grade7, :grade8, :grade9, :grade10, :grade11, :grade12, :school_division_ward_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_school
+    @school = School.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def school_params
+    params.require(:school).permit(:name, :nursery, :kindergarten, :grade1, :grade2, :grade3,
+                                   :grade4, :grade5, :grade6, :grade7, :grade8, :grade9, :grade10, :grade11, :grade12, :school_division_ward_id)
+  end
 end
