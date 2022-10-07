@@ -1,6 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @school_division %>
+<%= render @school_division, school_division_wards: @school_division_wards %>
 
 <div>
   <%= link_to "Edit this school division", edit_school_division_path(@school_division) %> |

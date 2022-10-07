@@ -1,14 +1,15 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>School divisions</h1>
+<%= render "layouts/index_header", items_name: 'school divisions', items_count: @school_divisions_count, items_per_page: @school_divisions_per_page %>
 
-<div id="school_divisions">
-  <% @school_divisions.each do |school_division| %>
-    <%= render school_division %>
-    <p>
-      <%= link_to "Show this school division", school_division %>
-    </p>
-  <% end %>
+<div id="school_divisions" class="block">
+  <ol class="ml-5">
+    <% @school_divisions_per_page.each do |school_division| %>
+      <li>
+        <%= link_to school_division.name, school_division %>
+      </li>
+    <% end %>
+  </ol>
 </div>
 
 <%= link_to "New school division", new_school_division_path %>

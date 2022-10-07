@@ -1,6 +1,6 @@
-<% content_for (:page_title) {items_name.capitalize} %>
+<% content_for (:page_title) {items_name.split.map { |w| w.capitalize }.join(' ')} %>
 
-<h1 class="title is-spaced"><%= items_name.capitalize %></h1>
+<h1 class="title is-spaced"><%= items_name.split.map { |w| w.capitalize }.join(' ') %></h1>
 
 <div class="block columns">
   <div class="subtitle column">Total: <%= pluralize items_count, items_name %></div>
