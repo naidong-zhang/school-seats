@@ -1,82 +1,101 @@
 <div id="<%= dom_id school %>">
-  <p>
-    <strong>Name:</strong>
+  <p class="title">
+    <strong>School Name:</strong>
     <%= school.name %>
   </p>
 
-  <p>
-    <strong>Nursery:</strong>
-    <%= school.nursery %>
-  </p>
+  <div class="columns mx-6">
+    <div class="column">
+      <p class="block">
+        <strong>Ward:</strong>
+        <%= link_to school.school_division_ward.ward.name, school.school_division_ward.ward %>
+      </p>
 
-  <p>
-    <strong>Kindergarten:</strong>
-    <%= school.kindergarten %>
-  </p>
+      <p class="block">
+        <strong>School Division:</strong>
+        <%= link_to school.school_division_ward.school_division.name, school.school_division_ward.school_division %>
+      </p>
 
-  <p>
-    <strong>Grade1:</strong>
-    <%= school.grade1 %>
-  </p>
+      <p class="block">
+        <strong>School Division Ward:</strong>
+        <%= link_to school.school_division_ward.name, school.school_division_ward %>
+      </p>
 
-  <p>
-    <strong>Grade2:</strong>
-    <%= school.grade2 %>
-  </p>
+      <p>
+        <strong>Home Addresses in the same School Division Ward:</strong>
+      </p>
+      <ul class="ml-4">
+        <% school.school_division_ward.home_addresses.each do |home_address| %>
+          <li>
+            <%= link_to "#{home_address.street_number} #{home_address.street_name}", home_address %>
+          </li>
+        <% end %>
+      </ul>
 
-  <p>
-    <strong>Grade3:</strong>
-    <%= school.grade3 %>
-  </p>
+    </div>
 
-  <p>
-    <strong>Grade4:</strong>
-    <%= school.grade4 %>
-  </p>
-
-  <p>
-    <strong>Grade5:</strong>
-    <%= school.grade5 %>
-  </p>
-
-  <p>
-    <strong>Grade6:</strong>
-    <%= school.grade6 %>
-  </p>
-
-  <p>
-    <strong>Grade7:</strong>
-    <%= school.grade7 %>
-  </p>
-
-  <p>
-    <strong>Grade8:</strong>
-    <%= school.grade8 %>
-  </p>
-
-  <p>
-    <strong>Grade9:</strong>
-    <%= school.grade9 %>
-  </p>
-
-  <p>
-    <strong>Grade10:</strong>
-    <%= school.grade10 %>
-  </p>
-
-  <p>
-    <strong>Grade11:</strong>
-    <%= school.grade11 %>
-  </p>
-
-  <p>
-    <strong>Grade12:</strong>
-    <%= school.grade12 %>
-  </p>
-
-  <p>
-    <strong>School division ward:</strong>
-    <%= school.school_division_ward_id %>
-  </p>
+    <div class="column is-one-third">
+      <table class="table box">
+        <tbody>
+          <tr>
+            <th>Nursery Students:</th>
+            <td><%= school.nursery %></td>
+          </tr>
+          <tr>
+            <th>Kindergarten Students:</th>
+            <td><%= school.kindergarten %></td>
+          </tr>
+          <tr>
+            <th>Grade 1 Students:</th>
+            <td><%= school.grade1 %></td>
+          </tr>
+          <tr>
+            <th>Grade 2 Students:</th>
+            <td><%= school.grade2 %></td>
+          </tr>
+          <tr>
+            <th>Grade 3 Students:</th>
+            <td><%= school.grade3 %></td>
+          </tr>
+          <tr>
+            <th>Grade 4 Students:</th>
+            <td><%= school.grade4 %></td>
+          </tr>
+          <tr>
+            <th>Grade 5 Students:</th>
+            <td><%= school.grade5 %></td>
+          </tr>
+          <tr>
+            <th>Grade 6 Students:</th>
+            <td><%= school.grade6 %></td>
+          </tr>
+          <tr>
+            <th>Grade 7 Students:</th>
+            <td><%= school.grade7 %></td>
+          </tr>
+          <tr>
+            <th>Grade 8 Students:</th>
+            <td><%= school.grade8 %></td>
+          </tr>
+          <tr>
+            <th>Grade 9 Students:</th>
+            <td><%= school.grade9 %></td>
+          </tr>
+          <tr>
+            <th>Grade 10 Students:</th>
+            <td><%= school.grade10 %></td>
+          </tr>
+          <tr>
+            <th>Grade 11 Students:</th>
+            <td><%= school.grade11 %></td>
+          </tr>
+          <tr>
+            <th>Grade 12 Students:</th>
+            <td><%= school.grade12 %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
 </div>

@@ -5,61 +5,65 @@
 <h1 class="title is-spaced">Schools</h1>
 <p class="subtitle">Total: <%= pluralize @schools.count, "schools" %></p>
 
-<div id="schools">
-    <div class="columns">
-      <div class="column">
+<table id="schools" class="table">
+  <thead>
+    <tr>
+      <td>
         <strong>School Name</strong>
-      </div>
-      <div class="column">
+      </td>
+      <td>
         <strong>Nursery Students</strong>
-      </div>
-      <div class="column">
+      </td>
+      <td>
         <strong>Kindergarten Students</strong>
-      </div>
-      <div class="column">
+      </td>
+      <td>
         <strong>Primary Students</strong>
-      </div>
-      <div class="column">
+      </td>
+      <td>
         <strong>Secondary Students</strong>
-      </div>
-      <div class="column">
+      </td>
+      <td>
         <strong>School Division Ward</strong>
-      </div>
-      <div class="column">
+      </td>
+      <td>
         <strong>Ward</strong>
-      </div>
-      <div class="column">
+      </td>
+      <td>
         <strong>School Division</strong>
-      </div>
-    </div>
+      </td>
+    </tr>
+  </thead>
+  <tbody>
   <% @schools.each do |school| %>
-    <div class="columns">
-      <div class="column">
+    <tr>
+      <th>
         <%= link_to school.name, school %>
-      </div>
-      <div class="column">
+      </th>
+      <td>
         <%= show_grade_students school.nursery %>
-      </div>
-      <div class="column">
+      </td>
+      <td>
         <%= show_grade_students school.kindergarten %>
-      </div>
-      <div class="column">
+      </td>
+      <td>
         <%= show_primary_students school %>
-      </div>
-      <div class="column">
+      </td>
+      <td>
         <%= show_secondary_students school %>
-      </div>
-      <div class="column">
+      </td>
+      <td>
         <%= link_to pluralize(school.school_division_ward.home_addresses.count, "home address"), school.school_division_ward %>
-      </div>
-      <div class="column">
+      </td>
+      <td>
         <%= link_to school.school_division_ward.ward.name, school.school_division_ward.ward %>
-      </div>
-      <div class="column">
+      </td>
+      <td>
         <%= link_to school.school_division_ward.school_division.name, school.school_division_ward.school_division %>
-      </div>
-    </div>
+      </td>
+    </tr>
   <% end %>
-</div>
+  </tbody>
+</table>
 
 <%= link_to "New school", new_school_path %>
