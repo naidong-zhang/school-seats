@@ -1,14 +1,15 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Wards</h1>
+<%= render "layouts/index_header", items_name: 'wards', items_count: @wards_count, items_per_page: @wards_per_page %>
 
-<div id="wards">
-  <% @wards.each do |ward| %>
-    <%= render ward %>
-    <p>
-      <%= link_to "Show this ward", ward %>
-    </p>
-  <% end %>
+<div id="wards" class="block">
+  <ol class="ml-5">
+    <% @wards_per_page.each do |ward| %>
+      <li>
+        <%= link_to ward.name, ward %>
+      </li>
+    <% end %>
+  </ol>
 </div>
 
 <%= link_to "New ward", new_ward_path %>

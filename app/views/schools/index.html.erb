@@ -1,13 +1,6 @@
-<% content_for (:page_title) {"Schools"} %>
-
 <p style="color: green"><%= notice %></p>
 
-<h1 class="title is-spaced">Schools</h1>
-
-<div class="block columns">
-  <div class="subtitle column">Total: <%= pluralize @schools_count, "schools" %></div>
-  <div class="column is-one-fifth"><%= paginate @schools_per_page %></div>
-</div>
+<%= render "layouts/index_header", items_name: 'schools', items_count: @schools_count, items_per_page: @schools_per_page %>
 
 <table id="schools" class="table">
   <thead>

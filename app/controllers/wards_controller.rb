@@ -1,13 +1,15 @@
 class WardsController < ApplicationController
-  before_action :set_ward, only: %i[ show edit update destroy ]
+  before_action :set_ward, only: %i[show edit update destroy]
 
   # GET /wards or /wards.json
   def index
-    @wards = Ward.all
+    @wards_count = Ward.count
+    @wards_per_page = Ward.order(:name).page params[:page]
   end
 
   # GET /wards/1 or /wards/1.json
   def show
+    @school_division_wards = SchoolDivisionWard.where(ward: @ward)
   end
 
   # GET /wards/new
@@ -16,8 +18,7 @@ class WardsController < ApplicationController
   end
 
   # GET /wards/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /wards or /wards.json
   def create
@@ -58,13 +59,14 @@ class WardsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_ward
-      @ward = Ward.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def ward_params
-      params.require(:ward).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_ward
+    @ward = Ward.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def ward_params
+    params.require(:ward).permit(:name)
+  end
 end

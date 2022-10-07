@@ -1,0 +1,8 @@
+<% content_for (:page_title) {items_name.capitalize} %>
+
+<h1 class="title is-spaced"><%= items_name.capitalize %></h1>
+
+<div class="block columns">
+  <div class="subtitle column">Total: <%= pluralize items_count, items_name %></div>
+  <div class="column is-one-fifth"><%= paginate items_per_page %></div>
+</div>
