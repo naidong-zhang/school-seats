@@ -14,6 +14,12 @@
       <td>
         <strong>School Division</strong>
       </td>
+      <td>
+        <strong>Schools #</strong>
+      </td>
+      <td>
+        <strong>Home Addresses #</strong>
+      </td>
     </tr>
   </thead>
   <tbody>
@@ -27,6 +33,12 @@
       </td>
       <td>
         <%= link_to school_division_ward.school_division.name, school_division_ward.school_division %>
+      </td>
+      <td>
+        <%= school_division_ward.schools.count %>
+      </td>
+      <td>
+        <%= school_division_ward.home_addresses.count %>
       </td>
     </tr>
   <% end %>

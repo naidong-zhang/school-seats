@@ -1,17 +1,47 @@
+<% content_for (:page_title) {"#{home_address.street_number} #{home_address.street_name}"} %>
+
 <div id="<%= dom_id home_address %>">
-  <p>
-    <strong>Street name:</strong>
-    <%= home_address.street_name %>
+  <p class="title">
+    <strong>Home Address:</strong>
+    <%= "#{home_address.street_number} #{home_address.street_name}" %>
   </p>
 
-  <p>
-    <strong>Street number:</strong>
-    <%= home_address.street_number %>
-  </p>
+  <div class="block m-4">
+    <p class="block">
+      <strong>Street Name:</strong>
+      <%= home_address.street_name %>
+    </p>
 
-  <p>
-    <strong>School division ward:</strong>
-    <%= home_address.school_division_ward_id %>
-  </p>
+    <p class="block">
+      <strong>Street Number:</strong>
+      <%= home_address.street_number %>
+    </p>
+
+    <p class="block">
+      <strong>Ward:</strong>
+      <%= link_to home_address.school_division_ward.ward.name, home_address.school_division_ward.ward %>
+    </p>
+
+    <p class="block">
+      <strong>School Division:</strong>
+      <%= link_to home_address.school_division_ward.school_division.name, home_address.school_division_ward.school_division %>
+    </p>
+
+    <p class="block">
+      <strong>School Division Ward:</strong>
+      <%= link_to home_address.school_division_ward.name, home_address.school_division_ward %>
+    </p>
+
+    <p>
+      <strong>Schools in the same School Division Ward:</strong>
+    </p>
+    <ol class="ml-6">
+      <% home_address.school_division_ward.schools.each do |school| %>
+        <li>
+          <%= link_to school.name, school %>
+        </li>
+      <% end %>
+    </ol>
+  </div>
 
 </div>

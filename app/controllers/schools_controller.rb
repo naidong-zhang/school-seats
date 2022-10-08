@@ -3,7 +3,7 @@ class SchoolsController < ApplicationController
 
   # GET /schools or /schools.json
   def index
-    @schools_per_page = School.order(:name).page params[:page]
+    @schools_per_page = School.includes(:school_division_ward).order(:name).page params[:page]
     @schools_count = School.count
   end
 

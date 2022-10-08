@@ -9,16 +9,16 @@
         <strong>School Name</strong>
       </td>
       <td>
-        <strong>Nursery Students</strong>
+        <strong>Nursery Students #</strong>
       </td>
       <td>
-        <strong>Kindergarten Students</strong>
+        <strong>Kindergarten Students #</strong>
       </td>
       <td>
-        <strong>Primary Students</strong>
+        <strong>Primary Students #</strong>
       </td>
       <td>
-        <strong>Secondary Students</strong>
+        <strong>Secondary Students #</strong>
       </td>
       <td>
         <strong>School Division Ward</strong>
@@ -50,7 +50,7 @@
         <%= show_secondary_students school %>
       </td>
       <td>
-        <%= link_to pluralize(school.school_division_ward.home_addresses.count, "home address"), school.school_division_ward %>
+        <%= link_to school.school_division_ward.name, school.school_division_ward %>
       </td>
       <td>
         <%= link_to school.school_division_ward.ward.name, school.school_division_ward.ward %>

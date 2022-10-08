@@ -1,3 +1,5 @@
+<% content_for (:page_title) {school.name} %>
+
 <div id="<%= dom_id school %>">
   <p class="title">
     <strong>School Name:</strong>
@@ -31,7 +33,6 @@
           </li>
         <% end %>
       </ol>
-
     </div>
 
     <div class="column is-one-third">

@@ -2,14 +2,31 @@
 
 <%= render "layouts/index_header", items_name: 'school divisions', items_count: @school_divisions_count, items_per_page: @school_divisions_per_page %>
 
-<div id="school_divisions" class="block">
-  <ol class="ml-5">
-    <% @school_divisions_per_page.each do |school_division| %>
-      <li>
+
+<table id="school_divisions" class="table">
+  <thead>
+    <tr>
+      <td>
+        <strong>School Division Name</strong>
+      </td>
+      <td>
+        <strong>School Division Wards #</strong>
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+  <% @school_divisions_per_page.each do |school_division| %>
+    <tr>
+      <td>
         <%= link_to school_division.name, school_division %>
-      </li>
-    <% end %>
-  </ol>
-</div>
+      </td>
+      <td>
+        <%= school_division.school_division_wards.count %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
 
 <%= link_to "New school division", new_school_division_path %>

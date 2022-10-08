@@ -1,20 +1,22 @@
+<% content_for (:page_title) {school_division_ward.name} %>
+
 <div id="<%= dom_id school_division_ward %>">
   <p class="title">
-    <strong>Name:</strong>
+    <strong>School Division Ward Name:</strong>
     <%= school_division_ward.name %>
   </p>
 
-  <p class="block">
-    <strong>Ward:</strong>
-    <%= school_division_ward.ward.name %>
-  </p>
+  <div class="block m-4">
+    <p class="block">
+      <strong>Ward:</strong>
+      <%= link_to school_division_ward.ward.name, school_division_ward.ward %>
+    </p>
 
-  <p class="block">
-    <strong>School division:</strong>
-    <%= school_division_ward.school_division.name %>
-  </p>
+    <p class="block">
+      <strong>School division:</strong>
+      <%= link_to school_division_ward.school_division.name, school_division_ward.school_division %>
+    </p>
 
-  <div class="block mb-4">
     <p class="mt-4">
       <strong>Schools:</strong>
     </p>
@@ -36,7 +38,6 @@
         </li>
       <% end %>
     </ol>
-
   </div>
 
 </div>

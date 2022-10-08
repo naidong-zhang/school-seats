@@ -1,14 +1,43 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Home addresses</h1>
+<%= render "layouts/index_header", items_name: 'home addresses', items_count: @home_addresses_count, items_per_page: @home_addresses_per_page %>
 
-<div id="home_addresses">
-  <% @home_addresses.each do |home_address| %>
-    <%= render home_address %>
-    <p>
-      <%= link_to "Show this home address", home_address %>
-    </p>
+<table id="home_addresses" class="table">
+  <thead>
+    <tr>
+      <td>
+        <strong>Home Address</strong>
+      </td>
+      <td>
+        <strong>School Division Ward</strong>
+      </td>
+      <td>
+        <strong>Ward</strong>
+      </td>
+      <td>
+        <strong>School Division</strong>
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+  <% @home_addresses_per_page.each do |home_address| %>
+    <tr>
+      <td>
+        <%= link_to "#{home_address.street_number} #{home_address.street_name}", home_address %>
+      </td>
+      <td>
+        <%= link_to home_address.school_division_ward.name, home_address.school_division_ward %>
+      </td>
+      <td>
+        <%= link_to home_address.school_division_ward.ward.name, home_address.school_division_ward.ward %>
+      </td>
+      <td>
+        <%= link_to home_address.school_division_ward.school_division.name, home_address.school_division_ward.school_division %>
+      </td>
+    </tr>
   <% end %>
-</div>
+  </tbody>
+</table>
+
 
 <%= link_to "New home address", new_home_address_path %>

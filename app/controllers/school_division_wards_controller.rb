@@ -4,7 +4,7 @@ class SchoolDivisionWardsController < ApplicationController
   # GET /school_division_wards or /school_division_wards.json
   def index
     @school_division_wards_count = SchoolDivisionWard.count
-    @school_division_wards_per_page = SchoolDivisionWard.order(:name).page params[:page]
+    @school_division_wards_per_page = SchoolDivisionWard.includes(:ward).includes(:school_division).order(:name).page params[:page]
   end
 
   # GET /school_division_wards/1 or /school_division_wards/1.json

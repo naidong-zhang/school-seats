@@ -2,14 +2,29 @@
 
 <%= render "layouts/index_header", items_name: 'wards', items_count: @wards_count, items_per_page: @wards_per_page %>
 
-<div id="wards" class="block">
-  <ol class="ml-5">
-    <% @wards_per_page.each do |ward| %>
-      <li>
+<table id="wards" class="table">
+  <thead>
+    <tr>
+      <td>
+        <strong>Ward Name</strong>
+      </td>
+      <td>
+        <strong>School Division Wards #</strong>
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+  <% @wards_per_page.each do |ward| %>
+    <tr>
+      <td>
         <%= link_to ward.name, ward %>
-      </li>
-    <% end %>
-  </ol>
-</div>
+      </td>
+      <td>
+        <%= ward.school_division_wards.count %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
 
 <%= link_to "New ward", new_ward_path %>
