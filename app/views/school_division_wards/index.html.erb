@@ -1,14 +1,36 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>School division wards</h1>
+<%= render "layouts/index_header", items_name: 'school division wards', items_count: @school_division_wards_count, items_per_page: @school_division_wards_per_page %>
 
-<div id="school_division_wards">
-  <% @school_division_wards.each do |school_division_ward| %>
-    <%= render school_division_ward %>
-    <p>
-      <%= link_to "Show this school division ward", school_division_ward %>
-    </p>
+<table id="school_division_wards" class="table">
+  <thead>
+    <tr>
+      <td>
+        <strong>School Division Ward Name</strong>
+      </td>
+      <td>
+        <strong>Ward</strong>
+      </td>
+      <td>
+        <strong>School Division</strong>
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+  <% @school_division_wards_per_page.each do |school_division_ward| %>
+    <tr>
+      <th>
+        <%= link_to school_division_ward.name, school_division_ward %>
+      </th>
+      <td>
+        <%= link_to school_division_ward.ward.name, school_division_ward.ward %>
+      </td>
+      <td>
+        <%= link_to school_division_ward.school_division.name, school_division_ward.school_division %>
+      </td>
+    </tr>
   <% end %>
-</div>
+  </tbody>
+</table>
 
 <%= link_to "New school division ward", new_school_division_ward_path %>

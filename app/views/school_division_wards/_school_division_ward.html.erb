@@ -1,17 +1,42 @@
 <div id="<%= dom_id school_division_ward %>">
-  <p>
+  <p class="title">
     <strong>Name:</strong>
     <%= school_division_ward.name %>
   </p>
 
-  <p>
-    <strong>School division:</strong>
-    <%= school_division_ward.school_division_id %>
+  <p class="block">
+    <strong>Ward:</strong>
+    <%= school_division_ward.ward.name %>
   </p>
 
-  <p>
-    <strong>Ward:</strong>
-    <%= school_division_ward.ward_id %>
+  <p class="block">
+    <strong>School division:</strong>
+    <%= school_division_ward.school_division.name %>
   </p>
+
+  <div class="block mb-4">
+    <p class="mt-4">
+      <strong>Schools:</strong>
+    </p>
+    <ol class="ml-6">
+      <% school_division_ward.schools.each do |school| %>
+        <li>
+          <%= link_to school.name, school %>
+        </li>
+      <% end %>
+    </ol>
+
+    <p class="mt-4">
+      <strong>Home Addresses:</strong>
+    </p>
+    <ol class="ml-6">
+      <% school_division_ward.home_addresses.each do |home_address| %>
+        <li>
+          <%= link_to "#{home_address.street_number} #{home_address.street_name}", home_address %>
+        </li>
+      <% end %>
+    </ol>
+
+  </div>
 
 </div>

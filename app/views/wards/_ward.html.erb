@@ -9,9 +9,9 @@
       <strong>School Division Wards:</strong>
     </p>
     <ol class="ml-6">
-      <% school_division_wards.each do |sdw| %>
+      <% ward.school_division_wards.each do |sdw| %>
         <li>
-          <%= link_to "#{sdw.name}", sdw %>
+          <%= link_to sdw.name, sdw %>
         </li>
       <% end %>
     </ol>

@@ -8,9 +8,7 @@ class SchoolDivisionsController < ApplicationController
   end
 
   # GET /school_divisions/1 or /school_divisions/1.json
-  def show
-    @school_division_wards = SchoolDivisionWard.where(school_division: @school_division)
-  end
+  def show; end
 
   # GET /school_divisions/new
   def new

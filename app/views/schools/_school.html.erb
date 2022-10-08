@@ -24,13 +24,13 @@
       <p>
         <strong>Home Addresses in the same School Division Ward:</strong>
       </p>
-      <ul class="ml-4">
+      <ol class="ml-6">
         <% school.school_division_ward.home_addresses.each do |home_address| %>
           <li>
             <%= link_to "#{home_address.street_number} #{home_address.street_name}", home_address %>
           </li>
         <% end %>
-      </ul>
+      </ol>
 
     </div>
 
