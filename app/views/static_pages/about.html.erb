@@ -1,48 +1,52 @@
 <h1 class="title">About</h1>
 
-<p>
-This is a research on available school seats for residents in Winnipeg.
-</p>
+<div class="m-6 content">
+  <p>
+  This is a research on available school seats for residents in Winnipeg.
+  </p>
 
-<p>
-<strong>The first data source</strong> is <a href="https://data.winnipeg.ca/Education-and-Training/Province-of-Manitoba-Public-And-Independent-School/ukha-ify8">Province of Manitoba - Public And Independent Schools Enrolments</a> downloaded as <code>Province_of_Manitoba_-_Public_And_Independent_Schools_Enrolments.csv</code>. It contains school names, their School Divisions, and vacancies for every grades. The dataset contains data from 2008 to 2019. I only extract the data of year 2019.
-</p>
+  <p>
+  <strong>The first data source</strong> is <a href="https://data.winnipeg.ca/Education-and-Training/Province-of-Manitoba-Public-And-Independent-School/ukha-ify8">Province of Manitoba - Public And Independent Schools Enrolments</a> downloaded as <code>Province_of_Manitoba_-_Public_And_Independent_Schools_Enrolments.csv</code>. It contains school names, their School Divisions, and vacancies for every grades. The dataset contains data from 2008 to 2019. I only extract the data of year 2019.
+  </p>
 
-<p>
-<strong>The second data source</strong> is <a href="https://data.winnipeg.ca/City-Planning/Addresses/cam2-ii3u">Addresses</a> downloaded as <code>Addresses.csv</code>. It contains street names, street numbers, their Wards, School Divisions, and School Division Wards, etc.
-</p>
+  <p>
+  <strong>The second data source</strong> is <a href="https://data.winnipeg.ca/City-Planning/Addresses/cam2-ii3u">Addresses</a> downloaded as <code>Addresses.csv</code>. It contains street names, street numbers, their Wards, School Divisions, and School Division Wards, etc.
+  </p>
 
-<p>
-The problem is in the first dataset, there is only the association between Schools and School Divisions, but the fact is that a child can only enroll in a school within the same School Division Ward to their home address. So, I use Faker as <strong>the third data source</strong> to generate fake data of School Division Ward for each school.
-</p>
+  <p>
+  The problem is in the first dataset, there is only the association between Schools and School Divisions, but the fact is that a child can only enroll in a school within the same School Division Ward to their home address. So, I use Faker as <strong>the third data source</strong> to generate fake data of School Division Ward for each school.
+  </p>
 
-<p>
-The steps are as follows:
-</p>
-<ol>
-  <li>
-  Use second data source to create table <code>school_divisions</code> (extract column School Division as <code>name</code>), and table <code>wards</code> (extract column Ward as <code>name</code>). (Abandon the column School Division Ward because in the raw dataset there are numbers in some rows, words in other rows and empty in others. The more important thing is that different entries have same name. For example the School Division Ward 1 means the first School Division Ward but it is for different School Divisions.)
-  </li>
-  <li>
-  Since there is a many-to-many relationship between School Divisions and Wards, create a table called <code>school_division_wards</code>, and use <code>Faker::Address.community</code> to generate easy-identified names for it.
-  </li>
-  <li>
-  Use first data source to create table <code>schools</code>, extract column School Name as <code>name</code>, and some columns like Nursery, Kindergarten, Grade 1 to Grade 12. As mentioned before, only use data of year 2019 (the latest year). Do not use the column School Division/Independent School directly, use the foreign key <code>school_division_ward_id</code> instead, with the restriction that the school of the random <code>school_division_ward_id</code> assigned must belong to the <code>school_division_id</code> which contains the <code>school_division_ward_id</code>.
-  </li>
-  <li>
-  Use second data source to create table <code>home_addresses</code>. Extract column Street Name, Street Number. Use <code>school_division_ward_id</code> as the foreign key.
-  </li>
-  <li>
-  Since there is another many-to-many relationship betwen Schools and HomeAddresses, create a table called <code>seats</code>.
-  </li>
-</ol>
+  <p>
+  The steps are as follows:
+  </p>
+  <ol>
+    <li>
+    Use second data source to create table <code>school_divisions</code> (extract column School Division as <code>name</code>), and table <code>wards</code> (extract column Ward as <code>name</code>). (Abandon the column School Division Ward because in the raw dataset there are numbers in some rows, words in other rows and empty in others. The more important thing is that different entries have same name. For example the School Division Ward 1 means the first School Division Ward but it is for different School Divisions.)
+    </li>
+    <li>
+    Since there is a many-to-many relationship between School Divisions and Wards, create a table called <code>school_division_wards</code>, and use <code>Faker::Address.community</code> to generate easy-identified names for it.
+    </li>
+    <li>
+    Use first data source to create table <code>schools</code>, extract column School Name as <code>name</code>, and some columns like Nursery, Kindergarten, Grade 1 to Grade 12. As mentioned before, only use data of year 2019 (the latest year). Do not use the column School Division/Independent School directly, use the foreign key <code>school_division_ward_id</code> instead, with the restriction that the school of the random <code>school_division_ward_id</code> assigned must belong to the <code>school_division_id</code> which contains the <code>school_division_ward_id</code>.
+    </li>
+    <li>
+    Use second data source to create table <code>home_addresses</code>. Extract column Street Name, Street Number. Use <code>school_division_ward_id</code> as the foreign key.
+    </li>
+    <li>
+    Since there is another many-to-many relationship betwen Schools and HomeAddresses, create a table called <code>seats</code>.
+    </li>
+  </ol>
 
-<p>
-<strong>Notice:</strong> Because there are too many data in these csv files (The Addresses.csv is 35MB), I set the limits that only creating maximum of 10 home addresses and 10 schools per school division ward (it means maximum of 100 seats per school division ward).
-</p>
+  <p>
+  <strong>Notice:</strong> Because there are too many data in these csv files (The Addresses.csv is 35MB), I set the limits that only creating maximum of 10 home addresses and 10 schools per school division ward (it means maximum of 100 seats per school division ward).
+  </p>
 
-<p>
-The ERD is as follows:
-</p>
+  <p>
+  The ERD is as follows:
+  </p>
 
-<img src="project1-erd.png" alt="ERD">
+  <div class="box">
+    <img src="project1-erd.png" alt="ERD">
+  </div>
+</div>
