@@ -1,0 +1,100 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for (:page_title) {"Home"} %>
+
+<div class="columns">
+  <div class="column">
+    <div class="box">
+      <h1 class="title">
+        <%= link_to "Wards", wards_path %>
+      </h1>
+      <p>
+        <%= "Amount: #{@wards_count} #{"(Only show #{@num} items)" if @has_too_many_wards}" %>
+      </p>
+      <br>
+      <ul>
+        <% @wards.each do |ward| %>
+        <li>
+          <%= link_to ward.name, ward %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <hr>
+    <div class="box">
+      <h1 class="title">
+        <%= link_to "School Divisions", school_divisions_path %>
+      </h1>
+      <p>
+        <%= "Amount: #{@school_divisions_count} #{"(Only show #{@num} items)" if @has_too_many_school_divisions}" %>
+      </p>
+      <br>
+      <ul>
+        <% @school_divisions.each do |school_division| %>
+        <li>
+          <%= link_to school_division.name, school_division %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="box">
+      <h1 class="title">
+        <%= link_to "School Division Wards", school_division_wards_path %>
+      </h1>
+      <p>
+        <%= "Amount: #{@school_division_wards_count} #{"(Only show #{@num} items)" if @has_too_many_school_division_wards}" %>
+      </p>
+      <br>
+      <ul>
+        <% @school_division_wards.each do |school_division_ward| %>
+        <li>
+          <%= link_to school_division_ward.name, school_division_ward %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="box">
+      <h1 class="title">
+        <%= link_to "Schools", schools_path %>
+      </h1>
+      <p>
+        <%= "Amount: #{@schools_count} #{"(Only show #{@num} items)" if @has_too_many_schools}" %>
+      </p>
+      <br>
+      <ul>
+        <% @schools.each do |school| %>
+        <li>
+          <%= link_to school.name, school %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="box">
+      <h1 class="title">
+        <%= link_to "Home Addresses", home_addresses_path %>
+      </h1>
+      <p>
+        <%= "Amount: #{@home_addresses_count} #{"(Only show #{@num} items)" if @has_too_many_home_addresses}" %>
+      </p>
+      <br>
+      <ul>
+        <% @home_addresses.each do |home_address| %>
+        <li>
+          <%= link_to "#{home_address.street_number} #{home_address.street_name}", home_address %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+</div>
