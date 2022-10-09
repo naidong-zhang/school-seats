@@ -12,15 +12,37 @@
   </head>
 
   <body>
-    <nav class="px-6 mb-6 navbar navbar-menu navbar-start has-background-link">
-      <%= link_to 'Home', root_path, class: "navbar-item has-text-white" %>
-      <%= link_to 'Wards', wards_path, class: "navbar-item has-text-white" %>
-      <%= link_to 'School Divisions', school_divisions_path, class: "navbar-item has-text-white" %>
-      <%= link_to 'School Division Wards', school_division_wards_path, class: "navbar-item has-text-white" %>
-      <%= link_to 'Schools', schools_path, class: "navbar-item has-text-white" %>
-      <%= link_to 'Home Addresses', home_addresses_path, class: "navbar-item has-text-white" %>
-      <%= link_to 'About', about_path, class: "navbar-item has-text-white" %>
-    </nav>
+    <div class="level px-6 mb-6 has-background-link">
+      <nav class="level-left level-item navbar navbar-menu navbar-start has-background-link">
+        <%= link_to 'Home', root_path, class: "navbar-item has-text-white" %>
+        <%= link_to 'Wards', wards_path, class: "navbar-item has-text-white" %>
+        <%= link_to 'School Divisions', school_divisions_path, class: "navbar-item has-text-white" %>
+        <%= link_to 'School Division Wards', school_division_wards_path, class: "navbar-item has-text-white" %>
+        <%= link_to 'Schools', schools_path, class: "navbar-item has-text-white" %>
+        <%= link_to 'Home Addresses', home_addresses_path, class: "navbar-item has-text-white" %>
+        <%= link_to 'About', about_path, class: "navbar-item has-text-white" %>
+      </nav>
+
+      <div class="level-right level-item ">
+        <%= form_with(url: search_schools_path, method: :get, local: true) do %>
+          <div class="field is-horizontal is-grouped">
+            <div class="control is-expanded">
+              <%= text_field_tag(:keywords, nil, class: "input", placeholder: 'search for school') %>
+            </div>
+            <div class="control select">
+              <select>
+                <option selected>All</option>
+                <option>qwertyuiop</option>
+              </select>
+            </div>
+            <div class="control">
+              <%= submit_tag("Search", class: "button is-primary") %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
     <div class="mx-6">
       <%= yield %>
     </div>

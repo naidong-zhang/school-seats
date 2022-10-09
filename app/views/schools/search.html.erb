@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for (:page_title) {"Search Results"} %>
+
+<h2 class="title is-4">You found <%= pluralize(@schools.length, "schools") %>:</h2>
+
+<div class="content">
+  <div class="columns">
+    <div class="column is-one-fifth"><%= paginate @schools_per_page %></div>
+  </div>
+
+  <ul>
+    <% @schools_per_page.each do |school| %>
+    <li>
+      <%= link_to school.name, school %>
+    </li>
+    <% end %>
+  </ul>
+</div>

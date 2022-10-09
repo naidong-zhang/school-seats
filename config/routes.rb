@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: "static_pages#home"
   get "/about", to: "static_pages#about", as: "about"
-  resources :schools
+  resources :schools do
+    collection do
+      get :search
+    end
+  end
   resources :home_addresses
   resources :school_division_wards
   resources :wards

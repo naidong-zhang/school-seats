@@ -7,6 +7,12 @@ class SchoolsController < ApplicationController
     @schools_count = School.count
   end
 
+  def search
+    wildcard_search = "%#{params[:keywords]}%"
+    @schools = School.where("name LIKE ?", wildcard_search)
+    @schools_per_page = @schools.order(:name).page params[:page]
+  end
+
   # GET /schools/1 or /schools/1.json
   def show; end
 
