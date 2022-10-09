@@ -9,7 +9,15 @@ class SchoolsController < ApplicationController
 
   def search
     wildcard_search = "%#{params[:keywords]}%"
-    @schools = School.where("name LIKE ?", wildcard_search)
+    school_division_ward = params[:school_division_ward].to_s
+    if school_division_ward != ""
+      @schools = School.includes(:school_division_ward).where(school_division_ward: school_division_ward).where(
+        "name LIKE ?", wildcard_search
+      )
+    else
+      @schools = School.where("name LIKE ?", wildcard_search)
+    end
+
     @schools_per_page = @schools.order(:name).page params[:page]
   end
 

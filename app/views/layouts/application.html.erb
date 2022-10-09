@@ -30,10 +30,7 @@
               <%= text_field_tag(:keywords, nil, class: "input", placeholder: 'search for school') %>
             </div>
             <div class="control select">
-              <select>
-                <option selected>All</option>
-                <option>qwertyuiop</option>
-              </select>
+              <%= select_tag("school_division_ward", options_from_collection_for_select(retrieve_select_options, "id", "name"), include_blank: "-- All School Division Wards --" ) %>
             </div>
             <div class="control">
               <%= submit_tag("Search", class: "button is-primary") %>
